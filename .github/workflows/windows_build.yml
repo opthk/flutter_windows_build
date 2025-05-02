@@ -16,7 +16,7 @@ jobs:
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: "3.29.1" # Sesuaikan dengan versi kamu
+          flutter-version: "3.29.1"
           channel: stable
 
       - name: Enable Windows desktop
@@ -28,8 +28,11 @@ jobs:
       - name: Build Windows App
         run: flutter build windows
 
+      - name: List files in build directory
+        run: dir build/windows/x64/runner/Release/
+
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: windows-build
-          path: build/windows/runner/Release/
+          path: build/windows/x64/runner/Release/my_desktop_app.exe
