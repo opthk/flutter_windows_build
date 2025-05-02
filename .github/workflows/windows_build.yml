@@ -28,16 +28,16 @@ jobs:
       - name: Build Windows App
         run: flutter build windows
 
-      - name: Copy DLLs to build directory
+      - name: Copy required DLLs to build directory
         run: |
-          copy C:\hostedtoolcache\windows\flutter\stable-3.29.1-x64\bin\cache\artifacts\engine\windows-x64\flutter_windows.dll build\windows\x64\runner\Release\
-          copy C:\hostedtoolcache\windows\flutter\stable-3.29.1-x64\bin\cache\artifacts\engine\windows-x64\flutter_embedder.dll build\windows\x64\runner\Release\
+          copy "${{ env.FLUTTER_ROOT }}\bin\cache\artifacts\engine\windows-x64\flutter_windows.dll" build\windows\x64\runner\Release\
+          copy "${{ env.FLUTTER_ROOT }}\bin\cache\artifacts\engine\windows-x64\flutter_embedder.dll" build\windows\x64\runner\Release\
 
-      - name: List files in build directory
+      - name: List files in build output
         run: dir build\windows\x64\runner\Release\
 
-      - name: Upload artifact
+      - name: Upload Windows build artifact
         uses: actions/upload-artifact@v4
         with:
           name: windows-build
-          path: build/windows/x64/runner/Release/my_desktop_app.exe
+          path: build/windows/x64/runner/Release/
