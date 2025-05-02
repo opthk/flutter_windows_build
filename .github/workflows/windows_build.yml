@@ -31,7 +31,7 @@ jobs:
       - name: Copy required DLLs to build directory
         run: |
           copy "${{ env.FLUTTER_ROOT }}\bin\cache\artifacts\engine\windows-x64\flutter_windows.dll" build\windows\x64\runner\Release\
-          copy "${{ env.FLUTTER_ROOT }}\bin\cache\artifacts\engine\windows-x64\flutter_embedder.dll" build\windows\x64\runner\Release\
+          copy "${{ env.FLUTTER_ROOT }}\bin\cache\artifacts\engine\windows-x64\icudtl.dat" build\windows\x64\runner\Release\
 
       - name: List files in build output
         run: dir build\windows\x64\runner\Release\
